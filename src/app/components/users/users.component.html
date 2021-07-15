@@ -1,0 +1,46 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <figure class="display-3 d-flex justify-content-center">
+            <img src="../../../assets/github-img/GitHub-Mark-120px-plus.png">
+        </figure>
+        <strong class="d-flex justify-content-center">Github user search aplication</strong>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2>Github Users</h2>
+</div>
+<div class="container mt-5">
+
+    <div class="container">
+        <div class="row mt-5">
+            <ng-container *ngFor="let userGit of githubUsersArray; let i=index">
+                <div class="col">
+                    <img [src]="userGit.avatar_url" class="rounded-circle img-round" alt="github-user-image">
+                </div>
+                <div class="col-sm mt-4">
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 bd-highlight"><strong>User id:</strong></div>
+                        <div class="p-2 bd-highlight">{{ userGit.id }}</div>
+                    </div>
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 bd-highlight"><strong>User name:</strong></div>
+                        <div class="p-2 bd-highlight">{{ userGit.name }}</div>
+                    </div>
+
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 bd-highlight"><strong>Login:</strong></div>
+                        <div class="p-2 bd-highlight">{{ userGit.login ? userGit.login : 'No user login' }}</div>
+                    </div>
+
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <button [routerLink]="['/user', userGit.login]" type="button" class="btn btn-outline-info">More
+                            info... <i class="far fa-arrow-alt-circle-right"></i></button>
+                    </div>
+
+                </div>
+                <div class="w-100 mb-5" *ngIf="(i+1) % 2 === 0"></div>
+            </ng-container>
+        </div>
+    </div>
+</div>

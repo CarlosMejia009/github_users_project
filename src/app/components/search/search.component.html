@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h1>Search user:</h1>
+    <div class="row">
+        <!-- Search form -->
+        <input class="form-control" type="text" placeholder="Search user github" [(ngModel)]="findUser"
+            (keyup.enter)="searchGh()" aria-label="Search">
+    </div>
+    <div class="row mt-5 ml-5">
+        <div class="card mr-5" style="width: 18rem;" *ngFor="let ghUser of arrayGhUsers">
+            <img [src]="ghUser.avatar_url" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ ghUser.login }}</h5>
+                <p class="card-text">{{ ghUser.bio ? ghUser.bio : 'No user bio' }}</p>
+                <button class="btn btn-outline-primary btn-lg btn-block"
+                    [routerLink]="['/user', ghUser.login]">
+                    Show more...</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-search-user [user]="findUser"></app-search-user>

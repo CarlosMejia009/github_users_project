@@ -1,0 +1,33 @@
+<div class="container mt-5" *ngIf="userInformation">
+    <h1>{{userInformation.login ? userInformation.login : userInformation.name }}</h1>
+    <div class="row">
+        <img [src]="userInformation.avatar_url" class="img-thumbnail">
+        <div class="col ml-3">
+            <h3 class="blackquote">Data User</h3>
+            <hr>
+            <p><strong>Id: </strong>{{ userInformation.id }}</p>
+            <br>
+            <p><strong>Bio:</strong> {{userInformation.bio ? userInformation.bio : 'No user bio '}}</p>
+            <h3>Github</h3>
+            <p><strong>Followers:</strong>&nbsp;<span class="badge badge-primary">{{userInformation.followers}}</span>
+            </p>
+            <p><strong>Following:</strong>&nbsp;<span class="badge badge-warning">{{userInformation.following}}</span>
+            </p>
+            <p><strong>Github url: </strong> <a [href]="userInformation.html_url" target="_blank">{{userInformation.html_url}}</a></p>
+            <br>
+            <div style="display: block;">
+                <canvas baseChart 
+                  [data]="pieChartData" 
+                  [labels]="pieChartLabels" 
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend">
+                </canvas>
+            </div>
+              
+            <br>
+            <button class="btn btn-outline-danger" (click)="back()">Back</button>
+        </div>
+    </div>
+</div>
